@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/1.1.0/annyang.min.js"></script> 
+</head>
+<body>
+    <div class="vid-container">
+        <video id="my" class="bgvid" autoplay="autoplay" muted="muted" preload="auto" loop>
+            <source src="earth.mp4" type="video/webm">
+        </video>
+
+
+    
+      <div class="inner-container">
+      <div class="box">
+        <center> <h3>GET IN TOUCH WITH ME!</h3></center> 
+        <form id="myForms">
+          <input type="text" id="uname" placeholder="Username"/>
+          <input type="number" id="no" placeholder="Mobile number"/>
+          <input type="email" id="email" placeholder="Email"/>
+          <input type="text" id="mssg" placeholder="Text me here"/>
+          <button>SUBMIT</button>
+        </form>
+        </div>
+      </div>
+    </div>
+    <script>
+       
+            if (annyang) {
+                var commands = {
+                    'pause video': function() {
+                     document.getElementById("my").pause();
+                    },
+                    'play video': function() {
+                     document.getElementById("my").play();
+                    },
+                    'write username *tag': function(variable){
+let uname=document.getElementById("uname");
+uname.value=variable;
+},
+'write mobile number *tag': function(variable){
+let uno=document.getElementById("no");
+uno.value=variable;
+},
+'write email *tag': function(variable){
+let uemail=document.getElementById("email");
+uemail.value=variable.split(" ").join("");
+},
+'write text *tag': function(variable){
+let mssg=document.getElementById("mssg");
+mssg.value=variable;
+},
+'submit form': function(){
+   
+    let myform=document.querySelector(".inner-container");
+    myform.remove();
+    window.alert("Form has been submitted\nWill text you back soon!");
+},
+'delete username': function(){
+  let uname=document.getElementById("uname");
+uname.value="";
+},
+
+'delete mobile number': function(){
+  let uno=document.getElementById("no");
+uno.value="";
+},
+
+'delete email': function(){
+  let uemail=document.getElementById("email");
+uemail.value="";
+},
+
+'delete text': function(){
+  let mssg=document.getElementById("mssg");
+mssg.value="";
+},
+
+'reset form': function(){
+  document.getElementById("myForms").reset();
+}
+                };
+                
+                annyang.addCommands(commands);
+                annyang.start(); 
+            }
+        
+        </script>
+</body>
+</html>
